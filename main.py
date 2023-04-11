@@ -24,13 +24,13 @@ def boom(phone):
     for i, url in enumerate(urls):
         try:
             # 1.创建Chrome浏览器对象，这会在电脑上在打开一个浏览器窗口
-            # 无头模式(开启请删掉下面三行注释，然后注释原来的)
-            # chrome_options = Options()
+            chrome_options = Options()
             # chrome_options.add_argument('--headless')
             chrome_options.add_experimental_option('useAutomationExtension', False)
-driver = webdriver.Chrome(options=chrome_options)
-driver.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument', {'source': ‘Object.defineProperty(navigator, "webdriver", {get:()=>undefined})'})
-            driver = webdriver.Chrome(chrome_options=chrome_options)
+            chrome_options.add_experimental_option("excludeSwitches", ['enable-automation'])
+            driver = webdriver.Chrome(options=chrome_options)
+            driver.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument', {'source': ‘Object.defineProperty(navigator, "webdriver", {get:()=>undefined})'})
+            # driver = webdriver.Chrome(chrome_options=chrome_options)
             # driver = webdriver.Chrome()
             
 
