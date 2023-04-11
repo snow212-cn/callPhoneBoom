@@ -30,11 +30,10 @@ def boom(phone):
             chrome_options.add_experimental_option("excludeSwitches", ['enable-automation'])
             driver = webdriver.Chrome(options=chrome_options)
             driver.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument', {'source': 'Object.defineProperty(navigator, "webdriver", {get:()=>undefined})'})
-            # driver = webdriver.Chrome(chrome_options=chrome_options)
-            # driver = webdriver.Chrome()
-            
+            # driver = webdriver.Chrome(chrome_options=chrome_options)            
 
             print("启动浏览器，打开Web界面")
+            driver.get('https://www.baidu.com')
             driver.get(url)
             # js = "window.open('" + url + "')"
             # driver.execute_script(js)
